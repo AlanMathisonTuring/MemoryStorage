@@ -34,13 +34,13 @@ public class MainActivity extends Activity {
 			
 			String totalStar = Formatter.formatFileSize(this, totalSize);
 			String availableStae = Formatter.formatFileSize(this, totalVSize);
-			textView.setText("SD卡的总内存容量为:"+totalStar+"\nSD卡的剩余容量为"+availableStae);
+			textView.setText(dataSize(textView)+"\nSD卡的总内存容量为:"+totalStar+"\nSD卡的剩余容量为"+availableStae);
 		}else{
 			textView.setText("您的手机没有插入SD卡或者SD卡接触不良!");
 		}
 	}
 	
-	private void dataSize(TextView textView) {
+	private String dataSize(TextView textView) {
 		
 			File path = Environment.getDataDirectory();
 			StatFs stat = new StatFs(path.getPath());
@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
 			
 			String totalStar = Formatter.formatFileSize(this, totalSize);
 			String availableStae = Formatter.formatFileSize(this, totalVSize);
-			textView.setText("SD卡的总内存容量为:"+totalStar+"\nSD卡的剩余容量为"+availableStae);
+			return "手机内存容量为:"+totalStar+"\n手机内存剩余容量为"+availableStae;
 		
 	}
 
